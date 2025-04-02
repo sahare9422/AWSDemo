@@ -1,22 +1,13 @@
 pipeline {
-    agent any  // Runs on any available Jenkins agent
-
+    agent any
+    tools {
+        gradle 'gradle-8.5'  // Matches the name in Global Tools
+    }
     stages {
-        stage('Build WAR with Gradle') {
+        stage('Test Gradle') {
             steps {
-                withMaven(gradle : 'Gradle-4.4.1'){
-                    sh 'gradle clean build'  // Executes the Gradle build
-                }
+                sh 'gradle -v'  // Should print Gradle 8.5
             }
         }
     }
-
-     post {
-            success {
-                echo '✅ Build and deployment successful! Access app at: http://your-server-ip:8080/loginapp'
-            }
-            failure {
-                echo '❌ Build failed! Check logs.'
-            }
-        }
-    }
+}
