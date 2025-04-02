@@ -8,13 +8,13 @@ pipeline {
             }
         }
     }
-}
- post {
-        success {
-            echo '✅ Build and deployment successful! Access app at: http://your-server-ip:8080/loginapp'
-        }
-        failure {
-            echo '❌ Build failed! Check logs.'
+
+     post {
+            success {
+                echo '✅ Build and deployment successful! Access app at: http://your-server-ip:8080/loginapp'
+            }
+            failure {
+                echo '❌ Build failed! Check logs.'
+            }
         }
     }
-}
