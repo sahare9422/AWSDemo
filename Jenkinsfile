@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build WAR with Gradle') {
             steps {
-                sh 'gradle clean build'  // Executes the Gradle build
+                withMaven(gradle : 'Gradle-4.4.1'){
+                    sh 'gradle clean build'  // Executes the Gradle build
+                }
             }
         }
     }
